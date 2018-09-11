@@ -46,6 +46,19 @@ bool Location::landedOnCommunityChest()
 }
 
 
+bool Location::landedonGoToJail()
+{
+	if (currentLocation == GOTOJAIL)
+	{
+		return true;
+	} 
+	else
+	{
+		return false;
+	}
+}
+
+
 int Location::getCurrentLocation()
 {
 	return currentLocation;
@@ -76,7 +89,7 @@ void Location::advanceToRailroad()
 
 void Location::advanceToUtility()
 {
-	// Move to the nearest utility.
+	// Move to the nearest utility. For now hardcode to Water Works.
 	// chance 7, 22, 36
 	// utility 12, 28
 	// Only chance cards move to utilities, so use fixed logic.
@@ -140,8 +153,7 @@ void Location::moveLocation(int numSpaces)
 		{
 			currentLocation = newLoc;
 		}
-
-	}
+	} // end handling Chance
 
 
 	if (landedOnCommunityChest())
@@ -157,6 +169,12 @@ void Location::moveLocation(int numSpaces)
 		{
 			currentLocation = newLoc;
 		}
+	} // end handling Community Chest
+
+	// Last check - did we land on Go To Jail?
+	if (landedonGoToJail())
+	{
+		currentLocation = JAIL;
 	}
 
 }
