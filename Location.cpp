@@ -76,7 +76,7 @@ void Location::advanceToRailroad()
 
 void Location::advanceToUtility()
 {
-	// Move to the nearest utility. For now hardcode to Water Works.
+	// Move to the nearest utility.
 	// chance 7, 22, 36
 	// utility 12, 28
 	// Only chance cards move to utilities, so use fixed logic.
