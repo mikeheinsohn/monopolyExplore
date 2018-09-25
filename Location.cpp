@@ -1,5 +1,3 @@
-#include <iostream>
-#include <iomanip>
 #include "location.h"
 #include "globals.h"
 #include "board.h"
@@ -20,8 +18,9 @@ Location::~Location()
 
 bool Location::landedOnChance()
 {
-	// chance 7, 22, 36
-	if (currentLocation == 7 || currentLocation == 22 || currentLocation == 36)
+	if (currentLocation == CHANCE1 || 
+		currentLocation == CHANCE2 || 
+		currentLocation == CHANCE3)
 	{
 		return true;
 	}
@@ -34,8 +33,9 @@ bool Location::landedOnChance()
 
 bool Location::landedOnCommunityChest()
 {
-	// community chest 2, 17, 33
-	if (currentLocation == 2 || currentLocation == 17 || currentLocation == 33)
+	if (currentLocation == COMMUNITYCHEST1 || 
+		currentLocation == COMMUNITYCHEST2 || 
+		currentLocation == COMMUNITYCHEST3)
 	{
 		return true;
 	}
@@ -68,20 +68,18 @@ int Location::getCurrentLocation()
 void Location::advanceToRailroad()
 {
 	// Move to the nearest railroad.
-	// chance 7, 22, 36
-	// rr's are 5, 15, 25, 35
 	// Only chance cards move to railroads, so use fixed logic.
-	if (currentLocation == 7) // chance 1
+	if (currentLocation == CHANCE1) // chance 1
 	{
-		currentLocation = 15; // Pennsylvania Railroad
+		currentLocation = PENNSYLVANIA_RAILROAD;
 	}
-	else if (currentLocation == 22) // chance 2
+	else if (currentLocation == CHANCE2) // chance 2
 	{
-		currentLocation = 25; // B&O Railroad
+		currentLocation = BO_RAILROAD;
 	}
-	else if (currentLocation == 36) // chance 3
+	else if (currentLocation == CHANCE3) // chance 3
 	{
-		currentLocation = 5; // Reading Railroad
+		currentLocation = READING_RAILROAD;
 	}
 	
 }
@@ -93,13 +91,13 @@ void Location::advanceToUtility()
 	// chance 7, 22, 36
 	// utility 12, 28
 	// Only chance cards move to utilities, so use fixed logic.
-	if (currentLocation == 7 || currentLocation == 36) // chance 1 or 3
+	if (currentLocation == CHANCE1 || currentLocation == CHANCE3)
 	{
-		currentLocation = 12; // Electric Company
+		currentLocation = ELECTRIC_COMPANY;
 	}
-	else if (currentLocation == 22) // chance 2
+	else if (currentLocation == CHANCE2)
 	{
-		currentLocation = 28; // Water Works
+		currentLocation = WATER_WORKS;
 	}
 }
 
@@ -107,14 +105,14 @@ void Location::advanceToUtility()
 void Location::goToGo()
 {
 	// Pretty simple, move to Go.
-	currentLocation = 0;
+	currentLocation = GO;
 }
 
 
 void Location::goToJail()
 {
 	// In the Clink!
-	currentLocation = 10;
+	currentLocation = JAIL;
 }
 
 
@@ -174,7 +172,7 @@ void Location::moveLocation(int numSpaces)
 	// Last check - did we land on Go To Jail?
 	if (landedonGoToJail())
 	{
-		currentLocation = JAIL;
+		goToJail();
 	}
 
 }
