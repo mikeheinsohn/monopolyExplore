@@ -1,8 +1,7 @@
+#include <string>
 #include "communitychest.h"
 #include "board.h"
 #include "globals.h"
-#include <string>
-using namespace std;
 
 // Cardslot is static, have to set its value here
 int CommunityChest::cardSlot = 0;
@@ -11,12 +10,12 @@ CommunityChest::CommunityChest()
 {
 	Board tempBoard;
 
-	communityChestCards[0] = tempBoard.getLocationFromName("Go");
+	communityChestCards[0] = GO;
 	communityChestCards[1] = NOMOVE; // bank error
 	communityChestCards[2] = NOMOVE; // doctor's fees
 	communityChestCards[3] = NOMOVE; // sale of stock
 	communityChestCards[4] = NOMOVE; // get out of jail free
-	communityChestCards[5] = tempBoard.getLocationFromName("Go To Jail");
+	communityChestCards[5] = JAIL;
 	communityChestCards[6] = NOMOVE; // grand opera night
 	communityChestCards[7] = NOMOVE; // christmas fund matures
 	communityChestCards[8] = NOMOVE; // income tax refund
@@ -44,7 +43,7 @@ int CommunityChest::checkCommunityChestCard()
 }
 
 
-string CommunityChest::getName(int slot)
+std::string CommunityChest::getName(int slot)
 {
 	Board tempBoard;
 	return tempBoard.getNameAtLocation(slot);
