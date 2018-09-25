@@ -1,7 +1,6 @@
 #include "chance.h"
 #include "board.h"
 #include "globals.h"
-using namespace std;
 
 // Cardslot is static, have to set its value here
 int Chance::cardSlot = 0;
@@ -10,19 +9,19 @@ Chance::Chance()
 {
 	Board tempBoard;
 	
-	chanceCards[0] = tempBoard.getLocationFromName("Go");
-	chanceCards[1] = tempBoard.getLocationFromName("Illinois Avenue");
-	chanceCards[2] = tempBoard.getLocationFromName("St. Charles Place");
+	chanceCards[0] = GO;
+	chanceCards[1] = ILLINOIS_AVENUE;
+	chanceCards[2] = ST_CHARLES_PLACE;
 	chanceCards[3] = UTILITY;
 	chanceCards[4] = RAILROAD;
 	chanceCards[5] = NOMOVE; // dividend of $50
 	chanceCards[6] = NOMOVE; // get out of jail free
 	chanceCards[7] = BACKTHREE;
-	chanceCards[8] = tempBoard.getLocationFromName("In Jail / Just Visiting");
+	chanceCards[8] = JAIL;
 	chanceCards[9] = NOMOVE; // general repairs
 	chanceCards[10] = NOMOVE; // poor tax
-	chanceCards[11] = tempBoard.getLocationFromName("Reading Railroad");
-	chanceCards[12] = tempBoard.getLocationFromName("Boardwalk");
+	chanceCards[11] = READING_RAILROAD;
+	chanceCards[12] = BOARDWALK;
 	chanceCards[13] = NOMOVE; // elected chairman
 	chanceCards[14] = NOMOVE; // building and loan matures
 }
@@ -41,7 +40,7 @@ int Chance::checkChanceCard()
 }
 
 
-string Chance::getName(int slot)
+std::string Chance::getName(int slot)
 {
 	Board tempBoard;
 	return tempBoard.getNameAtLocation(slot);
