@@ -9,6 +9,7 @@ public:
 	~Location();
 	bool landedOnChance();
 	bool landedOnCommunityChest();
+        bool landedOnGoToJail();
 	int getCurrentLocation();
 	void advanceToRailroad();
 	void advanceToUtility();
@@ -18,5 +19,4 @@ public:
 
 private:
 	int currentLocation;
-
 };
