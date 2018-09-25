@@ -1,8 +1,6 @@
 #pragma once
 #include <random>
 
-using namespace std;
-
 class Dice
 {
 public:
@@ -22,5 +20,4 @@ private:
 	int dice2;
 	int numDoubles;
 	int timesRolled;
-
 };
