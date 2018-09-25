@@ -1,9 +1,5 @@
 #include <random>
-#include <iostream>
-#include <iomanip>
 #include "Dice.h"
-
-using namespace std;
 
 Dice::Dice()
 {
