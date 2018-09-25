@@ -1,6 +1,4 @@
 #include <iostream>
-#include <iomanip>
-#include <stdlib.h>
 #include "dice.h"
 #include "globals.h"
 #include "board.h"
@@ -8,8 +6,6 @@
 #include "communitychest.h"
 #include "location.h"
 #include "OurStats.h"
-
-using namespace std;
 
 int main(void)
 {
@@ -21,7 +17,7 @@ int main(void)
 	OurStats statMap;
 
 	int totalrolls = 10000;
-	cout << "Rolling " << totalrolls << " times, then calculating." << endl;
+	std::cout << "Rolling " << totalrolls << " times, then calculating." << std::endl;
 	for (int ctr = 0; ctr < totalrolls; ctr++)
 	{
 		theDice.roll();
