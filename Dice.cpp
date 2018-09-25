@@ -50,8 +50,8 @@ void Dice::clearDoubles()
 void Dice::roll()
 {
 	timesRolled++;
-	mt19937 gen(rd());
-	uniform_int_distribution<> dist(1, 6);
+	std::mt19937 gen(rd());
+	std::uniform_int_distribution<> dist(1, 6);
 	dice1 = dist(gen);
 	dice2 = dist(gen);
 
