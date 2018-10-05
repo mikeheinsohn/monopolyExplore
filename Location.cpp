@@ -69,27 +69,24 @@ void Location::advanceToRailroad()
 {
 	// Move to the nearest railroad.
 	// Only chance cards move to railroads, so use fixed logic.
-	if (currentLocation == CHANCE1) // chance 1
+	if (currentLocation == CHANCE1)
 	{
 		currentLocation = PENNSYLVANIA_RAILROAD;
 	}
-	else if (currentLocation == CHANCE2) // chance 2
+	else if (currentLocation == CHANCE2)
 	{
 		currentLocation = BO_RAILROAD;
 	}
-	else if (currentLocation == CHANCE3) // chance 3
+	else if (currentLocation == CHANCE3)
 	{
 		currentLocation = READING_RAILROAD;
 	}
-	
 }
 
 
 void Location::advanceToUtility()
 {
-	// Move to the nearest utility. For now hardcode to Water Works.
-	// chance 7, 22, 36
-	// utility 12, 28
+	// Move to the nearest utility.
 	// Only chance cards move to utilities, so use fixed logic.
 	if (currentLocation == CHANCE1 || currentLocation == CHANCE3)
 	{
